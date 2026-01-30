@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2: Understanding and Formulating Research Questions | A Seminar in Phenomenology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --deep-purple: #4A1C6B;
+            --royal-purple: #6B2D9B;
+            --lavender: #9D7BB5;
+            --light-lavender: #E8DFF0;
+            --gold: #B8860B;
+            --light-gold: #F4E4BC;
+            --cream: #FDF8F0;
+            --text-dark: #2D2D2D;
+            --text-muted: #666;
+            --border-light: #E0D6E8;
+            --success-green: #2E7D32;
+            --error-red: #C62828;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', Georgia, serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f8f5fc 0%, #fdfbf7 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .module-header {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--royal-purple) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .week-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .module-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+            font-weight: 700;
+            margin: 0.5rem 0;
+            line-height: 1.2;
+        }
+
+        .module-subtitle {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .epigraph {
+            font-style: italic;
+            font-size: 1.15rem;
+            opacity: 0.95;
+            margin: 1.5rem 0 0.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--gold);
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .epigraph-source {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+        }
+
+        /* Navigation */
+        .module-nav {
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 1rem 1.25rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--deep-purple);
+            background: var(--cream);
+        }
+
+        .nav-link.active {
+            color: var(--deep-purple);
+            border-bottom-color: var(--gold);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 20px rgba(74, 28, 107, 0.06);
+            border: 1px solid var(--border-light);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            color: var(--deep-purple);
+            margin: 0 0 1.25rem 0;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2 .icon {
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--royal-purple);
+            margin: 1.75rem 0 0.75rem 0;
+        }
+
+        h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin: 1.25rem 0 0.5rem 0;
+        }
+
+        p {
+            margin: 0 0 1rem 0;
+        }
+
+        ul, ol {
+            margin: 0 0 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Welcome Card */
+        .welcome-card {
+            background: linear-gradient(135deg, var(--cream) 0%, #fff 100%);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Learning Objectives */
+        .objectives-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: objective;
+        }
+
+        .objectives-list li {
+            counter-increment: objective;
+            padding: 1rem 1rem 1rem 3.5rem;
+            position: relative;
+            background: var(--cream);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid var(--lavender);
+        }
+
+        .objectives-list li::before {
+            content: counter(objective);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--deep-purple), var(--royal-purple));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Key Concepts */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .concept-card {
+            background: linear-gradient(135deg, var(--light-lavender) 0%, #fff 100%);
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 28, 107, 0.12);
+        }
+
+        .concept-icon {
+            font-size: 2rem;
+            color: var(--royal-purple);
+            margin-bottom: 0.75rem;
+        }
+
+        .concept-term {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            color: var(--deep-purple);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-brief {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Readings Section */
+        .reading-category {
+            margin-bottom: 2rem;
+        }
+
+        .reading-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .reading-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .reading-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gold), #D4A017);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .reading-details {
+            flex: 1;
+        }
+
+        .reading-title {
+            font-weight: 600;
+            color: var(--deep-purple);
+            margin-bottom: 0.25rem;
+        }
+
+        .reading-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .reading-note {
+            font-size: 0.85rem;
+            color: var(--royal-purple);
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Note Boxes */
+        .note-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
+            border: 1px solid var(--gold);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .note-box .note-title {
+            font-weight: 600;
+            color: var(--deep-purple);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .note-box p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Insight Box */
+        .insight-box {
+            background: linear-gradient(135deg, #f5e6f5 0%, #efe0ef 100%);
+            border: 1px solid var(--lavender);
+            border-left: 4px solid var(--royal-purple);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .insight-box .insight-title {
+            font-weight: 600;
+            color: var(--deep-purple);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Activities Section */
+        .activity-card {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .activity-card:hover {
+            border-color: var(--lavender);
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .activity-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--deep-purple), var(--royal-purple));
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .activity-meta {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.2rem;
+            color: var(--deep-purple);
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-type {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .activity-points {
+            background: var(--light-gold);
+            color: var(--gold);
+            padding: 0.35rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .activity-instructions {
+            margin-bottom: 1rem;
+        }
+
+        .activity-deliverable {
+            background: var(--cream);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .activity-deliverable strong {
+            color: var(--deep-purple);
+        }
+
+        /* Video Section */
+        .video-container {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-title {
+            font-weight: 600;
+            color: var(--deep-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-duration {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Discussion Prompt */
+        .discussion-box {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--royal-purple) 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .discussion-box h3 {
+            color: white;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .discussion-prompt {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin: 1rem 0;
+            padding-left: 1rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .discussion-guidelines {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .discussion-guidelines ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .discussion-guidelines li {
+            margin-bottom: 0.35rem;
+            opacity: 0.95;
+        }
+
+        /* Progress Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--cream);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .checklist li:hover {
+            background: var(--light-lavender);
+        }
+
+        .checklist li.completed {
+            background: #e8f5e9;
+        }
+
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--success-green);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .checklist label {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        /* Example Cards */
+        .example-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .example-card:hover {
+            box-shadow: 0 4px 15px rgba(74, 28, 107, 0.1);
+        }
+
+        .example-card.good {
+            border-left: 4px solid var(--success-green);
+        }
+
+        .example-card.poor {
+            border-left: 4px solid var(--error-red);
+        }
+
+        .example-label {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .example-card.good .example-label {
+            background: #e8f5e9;
+            color: var(--success-green);
+        }
+
+        .example-card.poor .example-label {
+            background: #ffebee;
+            color: var(--error-red);
+        }
+
+        .example-question {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .example-explanation {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border-light);
+        }
+
+        .comparison-table th {
+            background: var(--deep-purple);
+            color: white;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--cream);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--light-lavender);
+        }
+
+        /* Question Formula Box */
+        .formula-box {
+            background: linear-gradient(135deg, var(--light-gold) 0%, #fff 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .formula-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.2rem;
+            color: var(--deep-purple);
+            margin-bottom: 1rem;
+        }
+
+        .formula-text {
+            font-size: 1.3rem;
+            color: var(--deep-purple);
+            font-weight: 600;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .formula-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        /* Flashcards */
+        .flashcard-container {
+            margin: 1.5rem 0;
+        }
+
+        .flashcard {
+            background: white;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .flashcard:hover {
+            box-shadow: 0 8px 30px rgba(74, 28, 107, 0.15);
+        }
+
+        .flashcard-inner {
+            width: 100%;
+        }
+
+        .flashcard.flipped .flashcard-front {
+            display: none;
+        }
+
+        .flashcard.flipped .flashcard-back {
+            display: block;
+        }
+
+        .flashcard-front, .flashcard-back {
+            width: 100%;
+        }
+
+        .flashcard-back {
+            display: none;
+        }
+
+        .flashcard-term {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            color: var(--deep-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .flashcard-hint {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .flashcard-definition {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .flashcard-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .flashcard-btn {
+            background: var(--deep-purple);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .flashcard-btn:hover {
+            background: var(--royal-purple);
+        }
+
+        .flashcard-counter {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-purple);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.25rem 0;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .module-header {
+                padding: 2rem 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .activity-header {
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.75rem;
+            }
+
+            .formula-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .module-nav {
+                display: none;
+            }
+
+            section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="module-header">
+        <div class="header-content">
+            <span class="week-badge">Week 2 of 8</span>
+            <h1 class="module-title">Understanding and Formulating Research Questions</h1>
+            <p class="module-subtitle">Developing Questions Suited for Phenomenological Inquiry</p>
+            <p class="epigraph">"The question is not what you look at, but what you see."</p>
+            <p class="epigraph-source">— Henry David Thoreau</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="module-nav" aria-label="Module navigation">
+        <div class="nav-container">
+            <a href="#overview" class="nav-link active">Overview</a>
+            <a href="#concepts" class="nav-link">Key Concepts</a>
+            <a href="#examples" class="nav-link">Examples</a>
+            <a href="#readings" class="nav-link">Readings</a>
+            <a href="#videos" class="nav-link">Videos</a>
+            <a href="#activities" class="nav-link">Activities</a>
+            <a href="#discussion" class="nav-link">Discussion</a>
+            <a href="#checklist" class="nav-link">Checklist</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Overview Section -->
+        <section id="overview">
+            <h2><span class="icon"><i class="fas fa-compass"></i></span> Welcome to Week 2</h2>
+            
+            <div class="welcome-card">
+                <p>Welcome back! Last week, we explored the philosophical foundations of phenomenology. This week, we take a crucial step toward becoming phenomenological researchers: learning to formulate research questions that are truly phenomenological in nature.</p>
+                <p>This might sound simple, but it's actually one of the most common places where phenomenological studies go wrong. Many dissertations claim to be phenomenological but ask questions that don't fit the methodology. By the end of this week, you'll understand exactly what makes a research question phenomenological—and you'll have drafted your own.</p>
+            </div>
+
+            <h3>Learning Objectives</h3>
+            <p>By the end of this week, you will be able to:</p>
+            <ol class="objectives-list">
+                <li>Distinguish phenomenological research questions from other types of qualitative research questions</li>
+                <li>Explain how phenomenological research questions align with the philosophy of phenomenology</li>
+                <li>Identify the essential components of a well-formulated phenomenological research question</li>
+                <li>Evaluate research questions for their phenomenological appropriateness</li>
+                <li>Draft preliminary phenomenological research questions for your own study</li>
+            </ol>
+
+            <div class="insight-box">
+                <p class="insight-title"><i class="fas fa-lightbulb"></i> Why This Matters</p>
+                <p>Your research question is the foundation of your entire study. A poorly formulated question leads to methodological confusion, data that doesn't fit your analysis approach, and findings that don't contribute to phenomenological understanding. Getting this right from the start saves enormous frustration later.</p>
+            </div>
+        </section>
+
+        <!-- Key Concepts Section -->
+        <section id="concepts">
+            <h2><span class="icon"><i class="fas fa-key"></i></span> Key Concepts This Week</h2>
+            
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <div class="concept-icon"><i class="fas fa-question-circle"></i></div>
+                    <div class="concept-term">Phenomenological Question</div>
+                    <div class="concept-brief">Asks about the <em>lived experience</em> of a phenomenon</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon"><i class="fas fa-star"></i></div>
+                    <div class="concept-term">Phenomenon</div>
+                    <div class="concept-brief">A specific, identifiable experience to be studied</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon"><i class="fas fa-users"></i></div>
+                    <div class="concept-term">Participants</div>
+                    <div class="concept-brief">People who have <em>lived</em> the phenomenon</div>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon"><i class="fas fa-search"></i></div>
+                    <div class="concept-term">Essence</div>
+                    <div class="concept-brief">The core meaning or structure of an experience</div>
+                </div>
+            </div>
+
+            <h3>The Phenomenological Research Question Formula</h3>
+            <p>Phenomenological research questions follow a specific structure that keeps the focus on lived experience:</p>
+
+            <div class="formula-box">
+                <div class="formula-title">The Basic Formula</div>
+                <div class="formula-text">"What is the lived experience of [phenomenon] for [participants]?"</div>
+                <div class="formula-note">Variations include: "What is it like to experience...?" or "What is the meaning of the experience of...?"</div>
+            </div>
+
+            <h3>What Makes a Question Phenomenological?</h3>
+            <p>A truly phenomenological research question has these characteristics:</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Characteristic</th>
+                        <th>Explanation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Focuses on lived experience</strong></td>
+                        <td>Asks what it is <em>like</em> to experience something, not just what happened</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Identifies a specific phenomenon</strong></td>
+                        <td>Names a particular experience (not a topic, population, or theory)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Seeks meaning and essence</strong></td>
+                        <td>Aims to understand the core structure or meaning of the experience</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Is open and exploratory</strong></td>
+                        <td>Does not assume outcomes or test hypotheses</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Requires first-person accounts</strong></td>
+                        <td>Can only be answered by those who have lived the experience</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Interactive Flashcards</h3>
+            <p>Test your understanding of this week's concepts:</p>
+            
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="flipCard(this)" id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div>
+                                <div class="flashcard-term" id="card-term">Phenomenon</div>
+                                <div class="flashcard-hint">Click to reveal definition</div>
+                            </div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="flashcard-definition" id="card-definition">
+                                In phenomenological research, a <strong>phenomenon</strong> is a specific lived experience that can be identified, named, and studied. It's not a topic (like "education"), a population (like "teachers"), or a theory (like "motivation"). Examples: the experience of becoming a mother, the experience of being bullied, the experience of leading during crisis.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-nav">
+                    <button class="flashcard-btn" onclick="prevCard()"><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="flashcard-btn" onclick="nextCard()">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="flashcard-counter">Card <span id="card-num">1</span> of <span id="card-total">5</span></div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section id="examples">
+            <h2><span class="icon"><i class="fas fa-clipboard-list"></i></span> Examples of Phenomenological Research Questions</h2>
+            
+            <p>Learning to recognize good phenomenological research questions is a skill. Study these examples carefully.</p>
+
+            <h3>Well-Formulated Phenomenological Questions</h3>
+
+            <div class="example-card good">
+                <span class="example-label"><i class="fas fa-check"></i> Good Example</span>
+                <p class="example-question">"What is the lived experience of first-generation college students navigating the transition to university life?"</p>
+                <p class="example-explanation"><strong>Why it works:</strong> Identifies a clear phenomenon (navigating the transition), specifies participants who have lived it (first-generation students), and focuses on experience rather than outcomes or causes.</p>
+            </div>
+
+            <div class="example-card good">
+                <span class="example-label"><i class="fas fa-check"></i> Good Example</span>
+                <p class="example-question">"What is it like for principals to lead their schools through a sudden shift to remote learning?"</p>
+                <p class="example-explanation"><strong>Why it works:</strong> Uses "what is it like" phrasing, identifies a specific phenomenon (leading through sudden shift), and focuses on the experiential dimension rather than strategies or outcomes.</p>
+            </div>
+
+            <div class="example-card good">
+                <span class="example-label"><i class="fas fa-check"></i> Good Example</span>
+                <p class="example-question">"What is the meaning of the experience of receiving a learning disability diagnosis as an adult?"</p>
+                <p class="example-explanation"><strong>Why it works:</strong> Seeks meaning (a phenomenological goal), identifies a specific moment/phenomenon (receiving diagnosis), and specifies participants (adults, not children).</p>
+            </div>
+
+            <h3>Questions That Need Revision</h3>
+
+            <div class="example-card poor">
+                <span class="example-label"><i class="fas fa-times"></i> Needs Revision</span>
+                <p class="example-question">"What strategies do first-generation students use to succeed in college?"</p>
+                <p class="example-explanation"><strong>The problem:</strong> Asks about strategies (behaviors), not lived experience. This is a good qualitative question, but it's not phenomenological. Better: "What is the lived experience of academic success for first-generation college students?"</p>
+            </div>
+
+            <div class="example-card poor">
+                <span class="example-label"><i class="fas fa-times"></i> Needs Revision</span>
+                <p class="example-question">"How does teacher burnout affect student achievement?"</p>
+                <p class="example-explanation"><strong>The problem:</strong> Asks about cause and effect, not lived experience. This is better suited for quantitative or mixed methods research. Better: "What is the lived experience of burnout for elementary school teachers?"</p>
+            </div>
+
+            <div class="example-card poor">
+                <span class="example-label"><i class="fas fa-times"></i> Needs Revision</span>
+                <p class="example-question">"What do teachers think about professional development?"</p>
+                <p class="example-explanation"><strong>The problem:</strong> Asks for opinions/perceptions rather than lived experience. Better: "What is the lived experience of participating in transformative professional development?"</p>
+            </div>
+
+            <div class="note-box">
+                <p class="note-title"><i class="fas fa-exclamation-triangle"></i> Common Pitfall</p>
+                <p>Many students confuse "perceptions" with "lived experience." Asking what people <em>think</em> about something is different from asking what it is <em>like</em> to experience something. Phenomenology focuses on the latter.</p>
+            </div>
+        </section>
+
+        <!-- Readings Section -->
+        <section id="readings">
+            <h2><span class="icon"><i class="fas fa-book-open"></i></span> This Week's Readings</h2>
+
+            <div class="reading-category">
+                <h3>Required Readings</h3>
+                
+                <div class="reading-item">
+                    <div class="reading-icon"><i class="fas fa-book"></i></div>
+                    <div class="reading-details">
+                        <div class="reading-title">Peoples (2021) — Chapter 2</div>
+                        <div class="reading-meta"><em>How to Write a Phenomenological Dissertation</em></div>
+                        <div class="reading-note">Focus on how Peoples distinguishes phenomenological questions from other qualitative approaches. Pay attention to the examples provided.</div>
+                    </div>
+                </div>
+                
+                <div class="reading-item">
+                    <div class="reading-icon"><i class="fas fa-book"></i></div>
+                    <div class="reading-details">
+                        <div class="reading-title">Smith & Eatough (2022) — Chapter 2</div>
+                        <div class="reading-meta"><em>Essentials of Interpretative Phenomenological Analysis</em></div>
+                        <div class="reading-note">Note how IPA researchers formulate questions. How do their questions reflect IPA's focus on interpretation and meaning-making?</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <p class="note-title"><i class="fas fa-bookmark"></i> Reading Strategy</p>
+                <p>As you read, keep a list of the research question examples provided by each author. Analyze each one: What makes it phenomenological? How does it reflect the philosophy we studied last week? Which examples resonate with your own research interests?</p>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section id="videos">
+            <h2><span class="icon"><i class="fas fa-video"></i></span> Video: Developing Phenomenological Research Questions</h2>
+            
+            <p>Watch this video to learn how to formulate research questions that are truly phenomenological in nature.</p>
+
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/W8r3TQpRPrg" title="Developing Phenomenological Research Questions" allowfullscreen></iframe>
+                </div>
+                <div class="video-title">Developing Phenomenological Research Questions</div>
+                <div class="video-duration"><i class="fas fa-clock"></i> ~12 minutes • Essential viewing for this week</div>
+            </div>
+
+            <div class="note-box">
+                <p class="note-title"><i class="fas fa-lightbulb"></i> Viewing Tip</p>
+                <p>As you watch, write down the research question examples discussed. Practice evaluating them: What makes each one phenomenological or not? How would you revise those that need improvement?</p>
+            </div>
+        </section>
+
+        <!-- Activities Section -->
+        <section id="activities">
+            <h2><span class="icon"><i class="fas fa-tasks"></i></span> This Week's Activities</h2>
+
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-number">1</div>
+                    <div class="activity-meta">
+                        <div class="activity-title">Reflective Journal Entry</div>
+                        <div class="activity-type">Weekly Reflection • 400-500 words</div>
+                    </div>
+                    <span class="activity-points">30 pts</span>
+                </div>
+                <div class="activity-instructions">
+                    <p>Reflect on what you've learned about phenomenological research questions this week:</p>
+                    <ul>
+                        <li>What is the relationship between phenomenological philosophy (intentionality, epoché, reduction) and the way phenomenological research questions are formulated?</li>
+                        <li>What was most challenging or surprising about learning to distinguish phenomenological questions from other qualitative questions?</li>
+                        <li>How has your understanding of your potential research phenomenon evolved this week?</li>
+                        <li>What questions do you still have about formulating phenomenological research questions?</li>
+                    </ul>
+                </div>
+                <div class="activity-deliverable">
+                    <strong>Deliverable:</strong> Submit your journal entry via Blackboard by end of week.
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-number">2</div>
+                    <div class="activity-meta">
+                        <div class="activity-title">Research Question Analysis</div>
+                        <div class="activity-type">Critical Analysis • Complete worksheet</div>
+                    </div>
+                    <span class="activity-points">20 pts</span>
+                </div>
+                <div class="activity-instructions">
+                    <p>Analyze the following research questions. For each one, determine whether it is phenomenological and explain why or why not. If it's not phenomenological, revise it to make it so.</p>
+                    <ol>
+                        <li>"What factors contribute to teacher retention in urban schools?"</li>
+                        <li>"What is the lived experience of immigrant parents engaging with their children's schools?"</li>
+                        <li>"How do students perceive online learning compared to face-to-face instruction?"</li>
+                        <li>"What is it like for school counselors to support students through grief?"</li>
+                        <li>"What are the best practices for implementing inclusive education?"</li>
+                    </ol>
+                </div>
+                <div class="activity-deliverable">
+                    <strong>Deliverable:</strong> Submit your analysis (1-2 paragraphs per question) via Blackboard.
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <div class="activity-header">
+                    <div class="activity-number">3</div>
+                    <div class="activity-meta">
+                        <div class="activity-title">Draft Your Research Question</div>
+                        <div class="activity-type">Research Development • 300-400 words</div>
+                    </div>
+                    <span class="activity-points">20 pts</span>
+                </div>
+                <div class="activity-instructions">
+                    <p>Building on your phenomenon brainstorm from last week, draft a preliminary phenomenological research question for your study. Include:</p>
+                    <ul>
+                        <li>Your draft research question (following the phenomenological formula)</li>
+                        <li>The phenomenon you are studying (be specific)</li>
+                        <li>Who your participants would be (those who have lived this experience)</li>
+                        <li>A brief explanation of why this question is phenomenological</li>
+                        <li>Any alternative versions of the question you considered</li>
+                    </ul>
+                </div>
+                <div class="activity-deliverable">
+                    <strong>Deliverable:</strong> Submit your draft question and explanation via Blackboard. This is a working draft—we will continue to refine it.
+                </div>
+            </div>
+        </section>
+
+        <!-- Discussion Section -->
+        <section id="discussion">
+            <h2><span class="icon"><i class="fas fa-comments"></i></span> Discussion Participation</h2>
+
+            <div class="discussion-box">
+                <h3><i class="fas fa-quote-left"></i> Discussion Prompt</h3>
+                <p class="discussion-prompt">Consider a research topic you're interested in (it can be the one you're developing for this course or another). How would the research question differ if you approached it from a phenomenological perspective versus a grounded theory, case study, or narrative inquiry perspective? What would be gained and lost with each approach? What does phenomenology uniquely offer for understanding your topic?</p>
+                <div class="discussion-guidelines">
+                    <strong>Guidelines:</strong>
+                    <ul>
+                        <li>Initial post: 250-300 words, due by Wednesday</li>
+                        <li>Respond to at least two peers by end of week</li>
+                        <li>Use specific examples to illustrate your points</li>
+                        <li>Reference this week's readings where appropriate</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checklist Section -->
+        <section id="checklist">
+            <h2><span class="icon"><i class="fas fa-clipboard-check"></i></span> Week 2 Checklist</h2>
+            
+            <p>Track your progress through this week's module:</p>
+
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" id="check1">
+                    <label for="check1"><strong>Read:</strong> Peoples (2021) Chapter 2</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check2">
+                    <label for="check2"><strong>Read:</strong> Smith & Eatough (2022) Chapter 2</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check3">
+                    <label for="check3"><strong>Watch:</strong> At least one video resource</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check4">
+                    <label for="check4"><strong>Complete:</strong> Reflective Journal Entry (30 pts)</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check5">
+                    <label for="check5"><strong>Complete:</strong> Research Question Analysis (20 pts)</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check6">
+                    <label for="check6"><strong>Complete:</strong> Draft Your Research Question (20 pts)</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check7">
+                    <label for="check7"><strong>Post:</strong> Initial discussion response (by Wednesday)</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check8">
+                    <label for="check8"><strong>Respond:</strong> Reply to at least two peers (by end of week)</label>
+                </li>
+            </ul>
+
+            <div class="note-box">
+                <p class="note-title"><i class="fas fa-clock"></i> Estimated Time</p>
+                <p>Plan for approximately <strong>6-8 hours</strong> this week: readings (~2.5 hours), videos (~30 minutes), activities (~3 hours), and discussion (~1 hour).</p>
+            </div>
+
+            <div class="insight-box">
+                <p class="insight-title"><i class="fas fa-arrow-right"></i> Looking Ahead</p>
+                <p>Next week, we move into <strong>Designing a Phenomenological Study</strong>. We'll discuss sampling strategies, data collection methods, ethical considerations, and introduce Interpretative Phenomenological Analysis (IPA) as our primary analytical method. Your draft research question from this week will guide your design decisions.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>A Seminar in Phenomenology</strong></p>
+        <p>Doctoral Seminar • Dr. M. Boudreaux</p>
+        <p>Southern Connecticut State University</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Flashcard Data
+        const flashcards = [
+            {
+                term: "Phenomenon",
+                definition: "In phenomenological research, a <strong>phenomenon</strong> is a specific lived experience that can be identified, named, and studied. It's not a topic (like 'education'), a population (like 'teachers'), or a theory (like 'motivation'). Examples: the experience of becoming a mother, the experience of being bullied, the experience of leading during crisis."
+            },
+            {
+                term: "Lived Experience",
+                definition: "<strong>Lived experience</strong> refers to first-person, embodied, pre-reflective experience—what it is actually <em>like</em> to go through something. Phenomenological research questions always center on lived experience, asking participants to describe their experiences rather than their opinions, beliefs, or strategies."
+            },
+            {
+                term: "Essence",
+                definition: "The <strong>essence</strong> of a phenomenon is its core, invariant structure—the features that make it what it is and without which it would be something else. Phenomenological research aims to identify the essence of an experience: what is common across all instances of this phenomenon?"
+            },
+            {
+                term: "Alignment",
+                definition: "<strong>Methodological alignment</strong> means ensuring your research question, data collection methods, analysis approach, and findings all fit together coherently. A phenomenological question requires phenomenological methods. Misalignment (e.g., a phenomenological question with thematic analysis designed for grounded theory) weakens a study."
+            },
+            {
+                term: "Open Inquiry",
+                definition: "Phenomenological research questions are characterized by <strong>open inquiry</strong>—they explore and describe rather than explain or predict. They don't test hypotheses or assume outcomes. The question 'What is the lived experience of X?' is open in a way that 'Does X cause Y?' is not."
+            }
+        ];
+
+        let currentCard = 0;
+
+        function updateCard() {
+            const card = document.getElementById('flashcard');
+            const term = document.getElementById('card-term');
+            const definition = document.getElementById('card-definition');
+            const cardNum = document.getElementById('card-num');
+            
+            // Remove flipped state
+            card.classList.remove('flipped');
+            
+            // Update content
+            term.textContent = flashcards[currentCard].term;
+            definition.innerHTML = flashcards[currentCard].definition;
+            cardNum.textContent = currentCard + 1;
+        }
+
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            currentCard = (currentCard + 1) % flashcards.length;
+            updateCard();
+        }
+
+        function prevCard() {
+            currentCard = (currentCard - 1 + flashcards.length) % flashcards.length;
+            updateCard();
+        }
+
+        // Initialize card total
+        document.getElementById('card-total').textContent = flashcards.length;
+
+        // Navigation highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Checklist persistence
+        const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+        
+        // Load saved state
+        checkboxes.forEach(checkbox => {
+            const saved = localStorage.getItem(`phenom-seminar-week2-${checkbox.id}`);
+            if (saved === 'true') {
+                checkbox.checked = true;
+                checkbox.closest('li').classList.add('completed');
+            }
+        });
+
+        // Save state on change
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                localStorage.setItem(`phenom-seminar-week2-${this.id}`, this.checked);
+                if (this.checked) {
+                    this.closest('li').classList.add('completed');
+                } else {
+                    this.closest('li').classList.remove('completed');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').slice(1);
+                const targetSection = document.getElementById(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
